@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f3">
+  <title>Field &amp; Form | Goods for everyday</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Field and Form home">
+      <span class="brand-mark" aria-hidden="true">F</span>
+      <span>field<span class="brand-amp">&amp;</span>form</span>
+    </a>
+    <label class="search-box">
+      <span class="search-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Search products</span>
+      <input id="search-input" type="search" placeholder="Search the collection" autocomplete="off">
+      <kbd>Ctrl K</kbd>
+    </label>
+    <div class="header-actions">
+      <button class="text-button orders-trigger" id="orders-trigger" type="button">My Orders</button>
+      <button class="cart-trigger" id="cart-trigger" type="button" aria-label="Open shopping cart">
+        <span class="bag-icon" aria-hidden="true"></span>
+        <span class="cart-label">Cart</span>
+        <span class="cart-count" id="cart-count" aria-live="polite">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="shop-intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-dot"></span> Considered goods, made for living</p>
+        <h1 id="page-title">A little better,<br><em>every day.</em></h1>
+      </div>
+      <p class="intro-copy">Useful things with a point of view. Thoughtfully chosen for the routines, rooms, and journeys that make up a life.</p>
+      <div class="intro-stamp" aria-hidden="true"><span>GOOD<br>THINGS<br>LIVE HERE</span><i>✳</i></div>
+    </section>
+
+    <section class="catalog" aria-labelledby="catalog-heading">
+      <div class="catalog-toolbar">
+        <div class="category-filters" id="category-filters" role="group" aria-label="Filter by category">
+          <button class="category-pill is-active" type="button" data-category="All" aria-pressed="true">All</button>
+          <button class="category-pill" type="button" data-category="Electronics" aria-pressed="false">Electronics</button>
+          <button class="category-pill" type="button" data-category="Fashion" aria-pressed="false">Fashion</button>
+          <button class="category-pill" type="button" data-category="Home" aria-pressed="false">Home</button>
+          <button class="category-pill" type="button" data-category="Accessories" aria-pressed="false">Accessories</button>
+        </div>
+        <span class="result-count" id="result-count" aria-live="polite"></span>
+      </div>
+      <div class="product-grid" id="products" aria-live="polite" aria-busy="true">
+        <p class="loading-message">Finding the good stuff...</p>
+      </div>
+    </section>
+    <footer class="site-footer"><span>Field &amp; Form</span><span>Thoughtful goods for everyday living.</span></footer>
+  </main>
+
+  <button class="drawer-scrim" id="drawer-scrim" type="button" aria-label="Close cart" hidden></button>
+  <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true" inert>
+    <div class="drawer-header">
+      <div><p class="eyebrow">Your selection</p><h2 id="cart-title">Shopping cart <span id="cart-line-count"></span></h2></div>
+      <button class="icon-button" id="close-cart" type="button" aria-label="Close cart">×</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <form class="checkout" id="checkout-form">
+      <label class="customer-field" for="customer-name">Name for this order
+        <input id="customer-name" name="customerName" type="text" minlength="2" maxlength="80" autocomplete="name" placeholder="Your name" required>
+      </label>
+      <div class="totals">
+        <div><span>Subtotal</span><strong id="cart-subtotal">₹0</strong></div>
+        <div><span>GST <small>18%</small></span><strong id="cart-gst">₹0</strong></div>
+        <div class="grand-total"><span>Total</span><strong id="cart-total">₹0</strong></div>
+      </div>
+      <button class="checkout-button" id="place-order" type="submit" disabled>Place order <span aria-hidden="true">↗</span></button>
+      <p class="checkout-note">Secure checkout · Prices include no hidden fees</p>
+    </form>
+  </aside>
+
+  <dialog class="orders-dialog" id="orders-dialog" aria-labelledby="orders-title">
+    <div class="orders-panel">
+      <div class="drawer-header">
+        <div><p class="eyebrow">The good things you chose</p><h2 id="orders-title">Your orders</h2></div>
+        <button class="icon-button" id="close-orders" type="button" aria-label="Close order history">×</button>
+      </div>
+      <div class="order-history" id="order-history" aria-live="polite"><p class="loading-message">Loading your orders...</p></div>
+    </div>
+  </dialog>
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
