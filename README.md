@@ -1,13 +1,10 @@
-# Online Shopping Microservices
+﻿# Microservices Online Shopping Capstone (GitOps + Prometheus & Grafana)
 
-Three small Node.js services: a browser storefront, product catalog API, and order API. The frontend proxies API requests so the browser only needs to reach port 3000.
+## Overview
+- Microservices shopping application deployed via GitOps (ArgoCD) on local Minikube (2 CPUs, 3 GB RAM, Docker driver).
+- Standalone Prometheus and Grafana Helm charts deployed in the monitoring namespace.
 
-## Run locally with Docker Compose
-
-```sh
-docker compose up --build
-```
-
-Open <http://localhost:3000>. The APIs are also available directly at `http://localhost:3001` (products) and `http://localhost:3002` (orders). Stop the stack with `docker compose down`.
-
-Each service exposes `/health` and `/metrics`. Prometheus metrics include request totals, error totals, request duration, and the default Node.js process metrics, including CPU and memory. Orders are held in memory and are cleared when the order service restarts; use persistent storage before deploying beyond a demo.
+## Key Troubleshooting & Optimizations
+- Switched from heavy kube-prometheus-stack to standalone Prometheus and Grafana charts to prevent OOMKilled and TLS handshake timeout on 3 GB RAM.
+- Tuned/disabled health probes where startup took longer and scaled down non-essential ArgoCD controllers during resource crunch.
+- Connected Grafana to http://prometheus-server.monitoring.svc.cluster.local and verified live up metrics.

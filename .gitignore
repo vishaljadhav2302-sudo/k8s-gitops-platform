@@ -1,0 +1,10 @@
+﻿*.log
+*.env
+*.key
+*.pem
+*secret*
+*password*
+secrets/
+.kube/
+.DS_Store
+Thumbs.db
